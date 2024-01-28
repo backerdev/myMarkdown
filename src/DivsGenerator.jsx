@@ -13,8 +13,13 @@ function DivGenerator({ item }) {
       processingMarkdown.forEach((single, index) => {
         let [key, value] = single.split("#");
         let transform = `${key}_${index}`;
+        console.log(value);
+        if (!value) {
+          key_valueobjects[transform] = ".";
+        }
         key_valueobjects[transform] = value;
       });
+      console.log(key_valueobjects);
       setMarkdown(key_valueobjects);
 
       setItemLength(processingMarkdown.length);
@@ -24,22 +29,26 @@ function DivGenerator({ item }) {
   }, [item]);
   const generateDivs = () => {
     const divs = [];
-    const multipleContent = [];
+    const multipleDivs = [];
     for (let i = 0; i < itemLength; i++) {
       //   const randomContent = Math.random().toString(36).substring(7); // Generates random content
+
       const styleContent = Object.keys(markdown)
         [i].split("_")[0]
-        .replace(/,/g, " "); // Generates random content: ;
-
+        ?.replace(/\./g, " "); // Generates random content: ;
       let derived = styleContent;
 
-      const contents = Object.values(markdown)[i]; // Generates random content: ;
+      // const contents = Object.values(markdown)[i]; // Generates random content: ;
       const content = Object.values(markdown)[i]; // Generates random content: ;
-      const contentsSplit = contents?.split(">>");
+      const contentsSplit = content?.split(">>");
 
-      if (contentsSplit) {
+      if (contentsSplit?.length) {
         for (let j = 0; j < contentsSplit.length; j++) {
-          multipleContent.push(<div>{contentsSplit[j]}</div>);
+          divs.push(
+            <div key={j} className={derived}>
+              {contentsSplit[j]}
+            </div>
+          );
         }
       }
 
@@ -50,7 +59,6 @@ function DivGenerator({ item }) {
         </div>
       );
     }
-
     return divs;
   };
 
