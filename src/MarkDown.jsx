@@ -10,7 +10,7 @@ export default function MarkDown() {
   }
 
   return (
-    <section>
+    <section className="bg-slate-300">
       <textarea
         type="text"
         onChange={(e) => setMarkdown(e.target.value)}

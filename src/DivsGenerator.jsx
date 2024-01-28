@@ -30,11 +30,15 @@ function DivGenerator({ item }) {
       const styleContent = Object.keys(markdown)
         [i].split("_")[0]
         .replace(/,/g, " "); // Generates random content: ;
+
+      let derived = styleContent;
+
       const content = Object.values(markdown)[i]; // Generates random content: ;
 
       divs.push(
-        <div key={i} className={styleContent}>
+        <div key={i} className={derived}>
           {content}
+          {/* <p className="text-blue-500">Styled</p> */}
         </div>
       );
     }
