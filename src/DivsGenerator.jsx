@@ -24,7 +24,7 @@ function DivGenerator({ item }) {
   }, [item]);
   const generateDivs = () => {
     const divs = [];
-
+    const multipleContent = [];
     for (let i = 0; i < itemLength; i++) {
       //   const randomContent = Math.random().toString(36).substring(7); // Generates random content
       const styleContent = Object.keys(markdown)
@@ -33,10 +33,18 @@ function DivGenerator({ item }) {
 
       let derived = styleContent;
 
+      const contents = Object.values(markdown)[i]; // Generates random content: ;
       const content = Object.values(markdown)[i]; // Generates random content: ;
+      const contentsSplit = contents?.split(">>");
+
+      if (contentsSplit) {
+        for (let j = 0; j < contentsSplit.length; j++) {
+          multipleContent.push(<div>{contentsSplit[j]}</div>);
+        }
+      }
 
       divs.push(
-        <div key={i} className={derived}>
+        <div key={i} className={`${derived} `}>
           {content}
           {/* <p className="text-blue-500">Styled</p> */}
         </div>

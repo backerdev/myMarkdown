@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 body {
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
   font-family: "Open Sans", sans-serif;
   font-family: "Roboto", sans-serif;
 }
@@ -68,7 +68,7 @@ section {
 .markdown {
   overflow: auto;
 
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
 }
 
 .hint {
