@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 function DivGenerator({ item }) {
+  const divs = [];
+  const multipleDivs = [];
   // Function to generate a random number of div elements
   const [markdown, setMarkdown] = useState("");
   const [itemLength, setItemLength] = useState(0);
@@ -13,13 +15,13 @@ function DivGenerator({ item }) {
       processingMarkdown.forEach((single, index) => {
         let [key, value] = single.split("#");
         let transform = `${key}_${index}`;
-        console.log(value);
+
         if (!value) {
           key_valueobjects[transform] = ".";
         }
         key_valueobjects[transform] = value;
       });
-      console.log(key_valueobjects);
+
       setMarkdown(key_valueobjects);
 
       setItemLength(processingMarkdown.length);
@@ -28,8 +30,6 @@ function DivGenerator({ item }) {
     return convertion();
   }, [item]);
   const generateDivs = () => {
-    const divs = [];
-    const multipleDivs = [];
     for (let i = 0; i < itemLength; i++) {
       //   const randomContent = Math.random().toString(36).substring(7); // Generates random content
 
@@ -40,25 +40,27 @@ function DivGenerator({ item }) {
 
       // const contents = Object.values(markdown)[i]; // Generates random content: ;
       const content = Object.values(markdown)[i]; // Generates random content: ;
-      const contentsSplit = content?.split(">>");
+      let contentsSplit = Object.values(markdown)[i]?.includes(">>");
+      contentsSplit = Object.values(markdown)[i]?.split(">>");
 
-      if (contentsSplit?.length) {
-        for (let j = 0; j < contentsSplit.length; j++) {
-          divs.push(
-            <div key={j} className={derived}>
-              {contentsSplit[j]}
-            </div>
-          );
-        }
+      if (contentsSplit) {
+        divs.push(
+          <div className={`${derived} `}>
+            {contentsSplit.map((string, indexx) => (
+              <div key={indexx + string}>{string}</div>
+            ))}
+          </div>
+        );
+      } else {
+        divs.push(
+          <div key={i} className={`${derived} `}>
+            {content}
+            {/* <p className="text-blue-500">Styled</p> */}
+          </div>
+        );
       }
-
-      divs.push(
-        <div key={i} className={`${derived} `}>
-          {content}
-          {/* <p className="text-blue-500">Styled</p> */}
-        </div>
-      );
     }
+
     return divs;
   };
 

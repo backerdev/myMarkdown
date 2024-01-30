@@ -14,34 +14,18 @@ section {
 
   height: 95vh;
 }
-.cheatsheet {
-  z-index: 9999;
-  max-height: 250px;
-  overflow-y: auto;
 
-  background-color: rgb(61, 61, 61);
-  color: rgb(222, 222, 222);
-  padding-left: 4px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
-}
 .classroom {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
+  /* width: 100%; */
   position: relative;
 }
-.code {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  background-color: rgb(46, 45, 45);
-  padding: 2px 4px;
-  font-size: 12px;
-  color: rgb(209, 204, 204);
-}
+
 .inputField {
   margin-right: 20px;
-  width: 30vw;
+  width: 450px;
   height: 100%;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -67,6 +51,8 @@ section {
 }
 .markdown {
   overflow: auto;
+  min-width: 500px;
+  max-width: 1000px;
 
   /* background-color: whitesmoke; */
 }
@@ -74,7 +60,7 @@ section {
 .hint {
   width: max-content;
   height: max-content;
-  background-color: orangered;
+  background-color: rgb(240, 231, 228);
   padding: 4px 8px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -86,6 +72,9 @@ section {
 .show {
   opacity: 1;
   transition: all ease-in-out 1s;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 2px;
+  width: 750px;
 }
 .hide {
   opacity: 0;
