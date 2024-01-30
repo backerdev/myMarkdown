@@ -42,8 +42,12 @@ function DivGenerator({ item }) {
       const content = Object.values(markdown)[i]; // Generates random content: ;
       let contentsSplit = Object.values(markdown)[i]?.includes(">>");
       contentsSplit = Object.values(markdown)[i]?.split(">>");
+      // let styleSplit = contentsSplit[1]?.split("=")[0];
+      // let subContentSplit = contentsSplit[1]?.split("=")[1];
 
       if (contentsSplit) {
+        console.log(content);
+
         divs.push(
           <div className={`${derived} `}>
             {contentsSplit.map((string, indexx) => (

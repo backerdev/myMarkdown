@@ -5,9 +5,9 @@ import RandomDivGenerator from "./DivsGenerator";
 
 function App() {
   return (
-    <>
+    <div className="app">
       <MarkDown />
-    </>
+    </div>
   );
 }
 
